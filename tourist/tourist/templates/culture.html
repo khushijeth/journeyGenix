@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture - JourneyGenix</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/culture.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    {% include 'nav.html' %}
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Experience the Rich Culture of Jharkhand</h1>
+            <p>Tribal traditions, folk dances, local festivals, and authentic cuisines</p>
+        </div>
+    </section>
+
+    <!-- Culture Highlights -->
+    <section class="culture-highlights">
+        <div class="container">
+            <h2 class="section-title">Cultural Highlights</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <img src="{% static 'images/culture/dance.jpg' %}" alt="Tribal Dance">
+                    <h3>Traditional Dances</h3>
+                    <p>Witness captivating tribal dance forms like Chhau, Karma, and Jhumar that reflect the vibrant spirit of the state.</p>
+                </div>
+                <div class="highlight-card">
+                    <img src="{% static 'images/culture/cuisine.jpg' %}" alt="Cuisine">
+                    <h3>Local Cuisine</h3>
+                    <p>Taste authentic dishes like Dhuska, Rugra, and Handia prepared with locally sourced ingredients.</p>
+                </div>
+                <div class="highlight-card">
+                    <img src="{% static 'images/culture/art.jpg' %}" alt="Handicrafts">
+                    <h3>Handicrafts</h3>
+                    <p>Explore traditional pottery, bamboo crafts, and paintings made by skilled local artisans.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Experiences Section -->
+    <section class="culture-experiences">
+        <div class="container">
+            <h2 class="section-title">Plan Your Cultural Experience</h2>
+            <p class="section-subtitle">Join guided tours, attend live performances, or participate in workshops.</p>
+            <div class="experiences-grid">
+                <div class="experience-card">
+                    <h3>Village Tours</h3>
+                    <p>Immerse yourself in tribal village life, learn about their traditions, and interact with locals.</p>
+                    <button class="btn btn-primary" onclick="bookExperience('village-tour')">Book Now</button>
+                </div>
+                <div class="experience-card">
+                    <h3>Dance Workshops</h3>
+                    <p>Learn the steps of Chhau and Karma dances from trained artists in hands-on sessions.</p>
+                    <button class="btn btn-primary" onclick="bookExperience('dance-workshop')">Join Workshop</button>
+                </div>
+                <div class="experience-card">
+                    <h3>Festival Packages</h3>
+                    <p>Attend popular festivals with guided experiences and cultural insights.</p>
+                    <button class="btn btn-primary" onclick="bookExperience('festival-package')">Explore</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+   {% include 'footer.html' %}
+
+    <script src="{% static 'scripts/main.js' %}"></script>
+    <script src="{% static 'scripts/culture.js' %}"></script>
+</body>
+</html>

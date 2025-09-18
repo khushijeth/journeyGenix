@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Stay in Jharkhand - Homestays, Hotels & Eco Retreats{% endblock %}</title>
+
+    <!-- Static CSS -->
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/accommodations.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    {% include 'nav.html' %}
+
+    <!-- Hero Section -->
+    <section class="hero hero-stay">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Find Your Perfect Stay in Jharkhand</h1>
+            <p class="hero-subtitle">Choose from cozy homestays, comfortable hotels, and eco-friendly retreats</p>
+        </div>
+    </section>
+
+    <!-- Accommodation Types -->
+    <section class="accommodation-types">
+        <div class="container">
+            <h2 class="section-title">Accommodation Options</h2>
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-icon">🏡</div>
+                    <h3>Homestays</h3>
+                    <p>Experience Jharkhand’s hospitality with local families, authentic food, and cultural immersion.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">🏨</div>
+                    <h3>Hotels & Resorts</h3>
+                    <p>Relax in comfortable hotels and luxury resorts with modern amenities and scenic views.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">🌳</div>
+                    <h3>Eco Retreats</h3>
+                    <p>Stay close to nature in eco-friendly lodges and camps, perfect for adventure and wildlife lovers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Stays (can be made dynamic later using Django context) -->
+    <section class="featured-stays">
+        <div class="container">
+            <h2 class="section-title">Featured Stays</h2>
+            <div class="stays-grid">
+                {% for stay in featured_stays %}
+                <div class="stay-card">
+                    <img src="{{ stay.image }}" alt="{{ stay.title }}">
+                    <div class="stay-content">
+                        <h3>{{ stay.title }}</h3>
+                        <p>{{ stay.description }}</p>
+                        <a href="{% url 'login' %}" class="btn btn-small">Book Now</a>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No featured stays available right now.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Book -->
+    <section class="how-to-book">
+        <div class="container">
+            <h2 class="section-title">How to Book Your Stay</h2>
+            <ol class="booking-steps">
+                <li>Browse accommodation options and featured stays above.</li>
+                <li>Click "Book Now" to contact the host or fill out the booking form.</li>
+                <li>Receive confirmation and details from our team or the host.</li>
+                <li>Enjoy your stay and share your experience with our community!</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Connected</h2>
+                <p>Get the latest updates on accommodations, destinations, and travel tips</p>
+                <form class="newsletter-form" method="post" action="{% url 'subscribe_newsletter' %}">
+                    {% csrf_token %}
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    <!-- Static JS -->
+    <script src="{% static 'scripts/main.js' %}"></script>
+    <script src="{% static 'scripts/accommodations.js' %}"></script>
+</body>
+</html>

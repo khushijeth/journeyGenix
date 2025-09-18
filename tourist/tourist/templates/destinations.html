@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - JourneyGenix</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/destinations.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include 'nav.html' %}
+
+    <section class="page-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Explore Jharkhand's Natural Wonders</h1>
+            <p>Discover breathtaking destinations that showcase the state's incredible biodiversity and cultural heritage</p>
+        </div>
+    </section>
+
+    <section class="search-section">
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" id="searchDestinations" placeholder="Search destinations...">
+                <button type="button" id="searchBtn">Search</button>
+            </div>
+            <div class="filter-options">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="nature">Nature</button>
+                <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+                <button class="filter-btn" data-filter="spiritual">Spiritual</button>
+                <button class="filter-btn" data-filter="adventure">Adventure</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="destinations-section">
+        <div class="container">
+            <div class="destinations-grid" id="destinationsGrid">
+                {% for destination in destinations %}
+                <div class="destination-detail-card" data-category="{{ destination.category }}" id="{{ destination.slug }}">
+                    <div class="destination-image-gallery">
+                        <div class="main-image" style="background-image: url('{{ destination.main_image }}')"></div>
+                        <div class="image-thumbnails">
+                            {% for thumb in destination.thumbnails %}
+                            <div class="thumbnail {% if forloop.first %}active{% endif %}" style="background-image: url('{{ thumb }}')"></div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="destination-info">
+                        <div class="destination-header">
+                            <h2>{{ destination.name }}</h2>
+                            <div class="rating">
+                                <span class="stars">{{ destination.stars }}</span>
+                                <span class="rating-text">({{ destination.rating }}/5)</span>
+                            </div>
+                        </div>
+                        <p class="destination-tagline">{{ destination.tagline }}</p>
+                        <p class="destination-description">{{ destination.description }}</p>
+                        <div class="destination-highlights">
+                            <h4>Highlights:</h4>
+                            <ul>
+                                {% for highlight in destination.highlights %}
+                                <li>{{ highlight }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="destination-details">
+                            <div class="detail-item">
+                                <strong>Best Time to Visit:</strong> {{ destination.best_time }}
+                            </div>
+                            <div class="detail-item">
+                                <strong>Distance from Ranchi:</strong> {{ destination.distance }}
+                            </div>
+                        </div>
+
+                        <!-- Map Section -->
+                        <div class="destination-map" id="map-{{ destination.slug }}"></div>
+
+                        <div class="destination-actions">
+                            <button class="btn btn-primary" onclick="openBookingModal('{{ destination.slug }}')">Book</button>
+                            <button class="btn btn-secondary" onclick="showLocalGuides('{{ destination.slug }}')">Find Guides</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+    <script src="{% static 'scripts/main.js' %}"></script>
+    <script src="{% static 'scripts/destinations.js' %}"></script>
+    <!-- Google Maps API (replace YOUR_API_KEY with actual key) -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMaps"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}JourneyGenix - Your Gateway to Natural Beauty & Tribal Culture{% endblock %}</title>
+
+    <!-- Static CSS -->
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    {% include 'nav.html' %}
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to Jharkhand</h1>
+            <p class="hero-subtitle">Discover untamed natural beauty, rich tribal heritage, and authentic experiences</p>
+            <div class="hero-buttons">
+                <a href="{% url 'destinations' %}" class="btn btn-primary">Explore Destinations</a>
+                <a href="{% url 'itinerary' %}" class="btn btn-secondary" style="margin-left: 10px;">Plan Your Trip (AI)</a>
+             </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Jharkhand?</h2>
+            <div class="features-grid">
+                {% for feature in features %}
+                <div class="feature-card">
+                    <div class="feature-icon">{{ feature.icon }}</div>
+                    <h3>{{ feature.title }}</h3>
+                    <p>{{ feature.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="destinations-preview">
+        <div class="container">
+            <h2 class="section-title">Popular Destinations</h2>
+            <div class="destinations-grid">
+                {% for destination in popular_destinations %}
+                <div class="destination-card" data-destination="{{ destination.slug }}">
+                    <div class="destination-image" style="background-image: url('{{ destination.image_url }}')"></div>
+                    <div class="destination-content">
+                        <h3>{{ destination.name }}</h3>
+                        <p>{{ destination.description }}</p>
+                        <a href="{% url 'destination_detail' destination.slug %}" class="btn btn-small">Explore</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <a href="{% url 'destinations' %}" class="btn btn-primary">View All Destinations</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="statistics">
+        <div class="container">
+            <div class="stats-grid">
+                {% for stat in stats %}
+                <div class="stat-item">
+                    <div class="stat-number" data-count="{{ stat.count }}">0</div>
+                    <div class="stat-label">{{ stat.label }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Connected</h2>
+                <p>Get the latest updates on destinations, cultural events, and community initiatives</p>
+                <form class="newsletter-form" id="newsletterForm" method="post" action="{% url 'subscribe' %}">
+                    {% csrf_token %}
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+  {% include 'footer.html' %}
+
+    <!-- Static JS -->
+    <script src="{% static 'scripts/main.js' %}"></script>
+    <script src="{% static 'scrip/home.js' %}"></script>
+</body>
+</html>

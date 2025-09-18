@@ -1,0 +1,119 @@
+.transport-header-bg {
+    background: linear-gradient(90deg, #00796b 0%, #43cea2 100%);
+    color: #fff;
+    padding: 48px 0 32px 0;
+    text-align: center;
+    margin-bottom: 32px;
+    border-radius: 0 0 32px 32px;
+    box-shadow: 0 4px 16px rgba(67,206,162,0.12);
+}
+.transport-header-bg h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+.transport-header-bg p {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 0;
+    opacity: 0.95;
+}
+@media (max-width: 600px) {
+    .transport-header-bg {
+        padding: 32px 0 24px 0;
+        border-radius: 0 0 16px 16px;
+    }
+    .transport-header-bg h2 {
+        font-size: 2rem;
+    }
+}
+
+.transport {
+    background: #f9f9f9;
+    padding: 40px 0;
+}
+.transport-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+.transport-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 2rem;
+    width: 260px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.transport-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+.transport-features {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 0;
+}
+.feature {
+    background: #eaf6f6;
+    border-radius: 5px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.95rem;
+}
+.transport-price {
+    font-weight: 600;
+    color: #00796b;
+    margin-bottom: 1rem;
+}
+.btn.btn-primary {
+    background: #00796b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.6rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: auto;
+}
+
+.journey-planner {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.journey-planner h3 {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+.journey-form .form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.form-group label {
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+.form-group input {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}

@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Experiences - JourneyGenix</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    {% include 'nav.html' %}
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Rich Tribal Heritage & Culture</h1>
+            <p>Experience authentic traditions, festivals, and crafts of Jharkhand's diverse communities</p>
+        </div>
+    </section>
+
+    <!-- Cultural Categories -->
+    <!-- (Keep the rest of your HTML exactly as it is) -->
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    <script src="{% static 'scripts/main.js' %}"></script>
+</body>
+</html>

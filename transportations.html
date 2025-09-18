@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transportation Services - JourneyGenix</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/transportations.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    {% include 'nav.html' %}
+
+    <!-- Attractive Header Section -->
+    <header class="transport-header-bg">
+        <h2>Transportation Services</h2>
+        <p>Reliable and affordable transportation options for your journey</p>
+    </header>
+    
+    <section id="transport" class="transport">
+        <div class="container">
+            <div class="transport-options">
+                {% for service in transport_services %}
+                <div class="transport-card">
+                    <div class="transport-icon">{{ service.icon }}</div>
+                    <h3>{{ service.name }}</h3>
+                    <p>{{ service.description }}</p>
+                    <div class="transport-features">
+                        {% for feature in service.features %}
+                        <span class="feature">{{ feature }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="transport-price">{{ service.price }}</div>
+                    <button class="btn btn-primary" onclick="bookTransport('{{ service.type }}')">
+                        {{ service.button_text }}
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="journey-planner">
+                <h3>Plan Your Journey</h3>
+                <div class="journey-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pickup">Pickup Location</label>
+                            <input type="text" id="pickup" placeholder="Enter pickup location">
+                        </div>
+                        <div class="form-group">
+                            <label for="destination">Destination</label>
+                            <input type="text" id="destination" placeholder="Enter destination">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="journey-date">Travel Date</label>
+                            <input type="date" id="journey-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="return-date">Return Date (Optional)</label>
+                            <input type="date" id="return-date">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="calculateJourney()">Calculate Route & Price</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+    <script src="{% static 'scripts/transportations.js' %}"></script>
+</body>
+</html>

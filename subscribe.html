@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe - JourneyGenix</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/subscribe.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    {% include 'nav.html' %}
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Subscribe to Our Newsletter</h1>
+            <p>Get updates on Jharkhand tourism, new destinations, and exclusive offers</p>
+        </div>
+    </section>
+
+    <!-- Subscription Form -->
+    <section class="subscribe-section">
+        <div class="container">
+            <h2 class="section-title">Stay Connected</h2>
+            <p class="section-subtitle">Subscribe to get the latest travel updates directly in your inbox.</p>
+
+            <form id="subscribeForm" class="subscribe-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="subscriberName">Your Name</label>
+                    <input type="text" id="subscriberName" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="subscriberEmail">Your Email</label>
+                    <input type="email" id="subscriberEmail" name="email" required placeholder="Enter your email">
+                </div>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+
+            <!-- Success / Error messages -->
+            <div id="subscribeMessage" class="form-message"></div>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+
+    <script src="{% static 'scripts/main.js' %}"></script>
+    <script src="{% static 'scripts/subscribe.js' %}"></script>
+</body>
+</html>

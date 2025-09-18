@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI-Powered Itinerary Planner</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+</head>
+<body class="bg-green-50 min-h-screen flex flex-col">
+
+  <!-- Navigation -->
+  <nav class="bg-green-700 text-white shadow sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto flex justify-between items-center py-4 px-4 md:px-0">
+      <h2 class="text-2xl font-bold">JourneyGenix</h2>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-6">
+        <a href="{% url 'home' %}" class="hover:underline">Home</a>
+        <a href="{% url 'destinations' %}" class="hover:underline">Destinations</a>
+        <a href="{% url 'accommodations' %}" class="hover:underline">Stay</a>
+        <a href="{% url 'transportations' %}" class="hover:underline">Transport</a>
+        <a href="{% url 'itinerary' %}" class="hover:underline">Itinerary Planner</a>
+        <a href="{% url 'culture' %}" class="hover:underline">Culture</a>
+        <a href="{% url 'contact' %}" class="hover:underline">Contact</a>
+      </div>
+
+      <!-- Hamburger Menu (mobile) -->
+      <div class="md:hidden flex flex-col justify-between w-6 h-5 cursor-pointer" onclick="toggleMenu(this)">
+        <span class="block h-0.5 w-full bg-white"></span>
+        <span class="block h-0.5 w-full bg-white"></span>
+        <span class="block h-0.5 w-full bg-white"></span>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-green-600 text-white">
+      <a href="{% url 'home' %}" class="block px-4 py-2 border-b hover:bg-green-500">Home</a>
+      <a href="{% url 'destinations' %}" class="block px-4 py-2 border-b hover:bg-green-500">Destinations</a>
+      <a href="{% url 'accommodations' %}" class="block px-4 py-2 border-b hover:bg-green-500">Stay</a>
+      <a href="{% url 'transportations' %}" class="block px-4 py-2 border-b hover:bg-green-500">Transport</a>
+      <a href="{% url 'itinerary' %}" class="block px-4 py-2 border-b hover:bg-green-500">Itinerary Planner</a>
+      <a href="{% url 'culture' %}" class="block px-4 py-2 border-b hover:bg-green-500">Culture</a>
+      <a href="{% url 'contact' %}" class="block px-4 py-2 hover:bg-green-500">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-green-500 text-white py-6 md:py-8 text-center rounded-b-2xl shadow">
+  <h1 class="text-2xl md:text-3xl font-bold mb-2">AI-Powered Itinerary Planner</h1>
+  <p class="text-sm md:text-base">Plan your perfect Jharkhand trip with our smart AI travel planner.</p>
+</header>
+
+  <!-- Main Section -->
+  <main class="flex-grow">
+    <div class="max-w-5xl mx-auto p-6 grid md:grid-cols-2 gap-8">
+
+      <!-- Left: Plan Your Trip -->
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h2 class="text-xl font-semibold text-green-800 mb-4">Plan Your Trip</h2>
+        <form method="post" class="space-y-4">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition">
+            Generate Itinerary
+          </button>
+        </form>
+      </div>
+
+      <!-- Right: Itinerary Results -->
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h2 class="text-xl font-semibold text-green-800 mb-4">Your Itinerary</h2>
+
+        {% if generated_itinerary %}
+          {% for day in generated_itinerary %}
+            <div class="border rounded-lg p-4 mb-4 bg-green-50">
+              <h3 class="text-green-700 font-bold text-lg mb-2">Day {{ day.day }}</h3>
+              <p class="mb-1"><strong>Destinations:</strong> {{ day.destinations }}</p>
+              <p class="mb-1"><strong>Activities:</strong> {{ day.activities }}</p>
+              <p class="mb-1"><strong>Transport:</strong> {{ day.transport }}</p>
+              <p><strong>Stay:</strong> {{ day.accommodation }}</p>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="flex flex-col items-center justify-center text-center p-6">
+             <p class="text-gray-500 text-lg">Your AI-generated itinerary will appear here after submission.</p>
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-green-700 text-green-100 text-center py-4">
+     <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>JourneyGenix</h3>
+                    <p>Connecting tourists with authentic experiences while empowering local communities through sustainable tourism.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="{% url 'destinations' %}">Destinations</a></li>
+                        <li><a href="{% url 'accommodations' %}">Accommodations</a></li>
+                        <li><a href="{% url 'culture' %}">Cultural Experiences</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#booking">Booking Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="#facebook" class="social-link">Facebook</a>
+                        <a href="#instagram" class="social-link">Instagram</a>
+                        <a href="#twitter" class="social-link">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 JourneyGenix. All rights reserved.</p>
+            </div>
+        </div>
+  </footer>
+
+  <!-- Hamburger Menu Script -->
+  <script>
+    function toggleMenu(el) {
+      el.classList.toggle('open');
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+
+</body>
+</html>

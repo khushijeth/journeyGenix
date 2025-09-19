@@ -56,8 +56,10 @@ class Destination(models.Model):
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
+    description = models.TextField()
+    image = models.ImageField(upload_to='destinations/')
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.name}, {self.city}"
 
 

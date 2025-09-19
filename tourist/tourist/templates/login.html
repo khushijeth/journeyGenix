@@ -21,11 +21,11 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: rgb(117, 135, 150);
+      background-color: rgb(167, 198, 167);
     }
 
     .login-container {
-      background: rgb(98, 135, 165);
+      background: rgb(226, 225, 222);
       padding: 2rem;
       border-radius: 15px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -62,13 +62,15 @@
     }
 
     .login-container button:hover {
-      background: #218838;
+      background: rgb(85 , 85, 130);
+    
+      
     }
 
     .login-container p {
       margin-top: 1rem;
       font-size: 0.9rem;
-      color: white;
+      color: black;
     }
 
     .login-container p a {
@@ -106,12 +108,12 @@
       {% csrf_token %}
       <input type="email" name="email" placeholder="Email" required>
       <input type="password" name="password" placeholder="Password" required>
-      <button type="submit">Login</button>
+     <a href="{% url 'booking' %}" ><button type="submit">Login</button></a>
     </form>
     {% if output %}
-      <p style="color: #ffdddd; background: #660000; border-radius: 6px; padding: 8px; margin-top: 10px;">{{ output }}</p>
+      <!-- <p style="color: #ffdddd; background: #660000; border-radius: 6px; padding: 8px; margin-top: 10px;">{{ output }}</p> -->
     {% endif %}
-    <p>Don’t have an account? <a href="{% url 'register' %}">Register</a></p>
+    <p><a href="{% url 'register' %}" class="btn btn-small">Register</a>
   </div>
 </body>
 </html>

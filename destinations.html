@@ -47,7 +47,7 @@
                         <div class="main-image" style="background-image: url('{{ destination.main_image }}')"></div>
                         <div class="image-thumbnails">
                             {% for thumb in destination.thumbnails %}
-                            <div class="thumbnail {% if forloop.first %}active{% endif %}" style="background-image: url('{{ thumb }}')"></div>
+                            <div class="thumbnail {% if forloop.first %}active{% endif %}" style="background-image: url('{{thumb }}')"></div>
                             {% endfor %}
                         </div>
                     </div>

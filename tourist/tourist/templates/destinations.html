@@ -24,10 +24,12 @@
 
     <section class="search-section">
         <div class="container">
-            <div class="search-bar">
-                <input type="text" id="searchDestinations" placeholder="Search destinations...">
-                <button type="button" id="searchBtn">Search</button>
-            </div>
+            <form action="/search">
+                <div class="search-bar">
+                    <input type="text" name= "q" id="searchDestinations" placeholder="Search destinations...">
+                    <button type="button" id="searchBtn">Search</button>
+                </div>
+            </form>
             <div class="filter-options">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="nature">Nature</button>
@@ -44,7 +46,7 @@
                 {% for destination in destinations %}
                 <div class="destination-detail-card" data-category="{{ destination.category }}" id="{{ destination.slug }}">
                     <div class="destination-image-gallery">
-                        <div class="main-image" style="background-image: url('{{ destination.main_image }}')"></div>
+                        <div class="main-image" style="background-image: url('{{ destination.image.url }}')"></div>
                         <div class="image-thumbnails">
                             {% for thumb in destination.thumbnails %}
                             <div class="thumbnail {% if forloop.first %}active{% endif %}" style="background-image: url('{{ thumb }}')"></div>
@@ -61,29 +63,29 @@
                         </div>
                         <p class="destination-tagline">{{ destination.tagline }}</p>
                         <p class="destination-description">{{ destination.description }}</p>
-                        <div class="destination-highlights">
+                        <!-- <div class="destination-highlights">
                             <h4>Highlights:</h4>
                             <ul>
                                 {% for highlight in destination.highlights %}
                                 <li>{{ highlight }}</li>
                                 {% endfor %}
                             </ul>
-                        </div>
-                        <div class="destination-details">
+                        </div> -->
+                        <!-- <div class="destination-details">
                             <div class="detail-item">
                                 <strong>Best Time to Visit:</strong> {{ destination.best_time }}
                             </div>
                             <div class="detail-item">
                                 <strong>Distance from Ranchi:</strong> {{ destination.distance }}
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Map Section -->
                         <div class="destination-map" id="map-{{ destination.slug }}"></div>
 
                         <div class="destination-actions">
-                            <button class="btn btn-primary" onclick="openBookingModal('{{ destination.slug }}')">Book</button>
-                            <button class="btn btn-secondary" onclick="showLocalGuides('{{ destination.slug }}')">Find Guides</button>
+                            <!-- <button class="btn btn-primary" onclick="openBookingModal('{{ destination.slug }}')">Book</button>
+                            <button class="btn btn-secondary" onclick="showLocalGuides('{{ destination.slug }}')">Find Guides</button> -->
                         </div>
                     </div>
                 </div>

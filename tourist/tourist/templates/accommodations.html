@@ -59,7 +59,7 @@
                     <div class="stay-content">
                         <h3>{{ stay.title }}</h3>
                         <p>{{ stay.description }}</p>
-                        <a href="{% url 'login' %}" class="btn btn-small">Book Now</a>
+                        <a href="{% url 'register' %}" class="btn btn-small">Book Now</a>
                     </div>
                 </div>
                 {% empty %}
@@ -88,7 +88,7 @@
             <div class="newsletter-content">
                 <h2>Stay Connected</h2>
                 <p>Get the latest updates on accommodations, destinations, and travel tips</p>
-                <form class="newsletter-form" method="post" action="{% url 'subscribe_newsletter' %}">
+                <form class="newsletter-form" method="post" action="{% url 'subscribe' %}">
                     {% csrf_token %}
                     <input type="email" name="email" placeholder="Enter your email" required>
                     <button type="submit" class="btn btn-primary">Subscribe</button>

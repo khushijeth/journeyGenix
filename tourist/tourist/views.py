@@ -17,29 +17,26 @@ def home(request):
         {"icon": "🏔", "title": "Natural Wonders", "description": "From Netarhat to Hundru Falls..."},
         {"icon": "🎭", "title": "Rich Tribal Culture", "description": "Experience tribal traditions..."},
         {"icon": "🦌", "title": "Wildlife Adventure", "description": "Explore Betla National Park..."},
-        {"icon": "🏛", "title": "Historical Heritage", "description": "Visit temples and historical sites..."},
     ]
 
     popular_destinations = [
-        {"slug": "netarhat", "name": "Netarhat", "description": "The Queen of Chotanagpur...", "image_url": "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg"},
-        {"slug": "hundru", "name": "Hundru Falls", "description": "Experience the thunderous waterfall...", "image_url": "https://images.pexels.com/photos/1029600/pexels-photo-1029600.jpeg"},
-        {"slug": "betla", "name": "Betla National Park", "description": "Home to tigers, elephants...", "image_url": "https://images.pexels.com/photos/1029616/pexels-photo-1029616.jpeg"},
-        {"slug": "deoghar", "name": "Deoghar", "description": "Sacred city with Baba Baidyanath Temple...", "image_url": "https://images.pexels.com/photos/1029615/pexels-photo-1029615.jpeg"},
-    ]
+        {"slug": "netarhat", "name": "Netarhat", "description": "The Queen of Chotanagpur...", "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Pine_trees_of_Netarhat_Hill_station.jpg"},
+        {"slug": "hundru", "name": "Hundru Falls", "description": "Experience the thunderous waterfall...", "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Hundru_Falls%2C_Jharkhand%2C_India_4.jpg"},
+        {"slug": "betla", "name": "Betla National Park", "description": "Home to tigers, elephants...", "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Monkey_in_betla_park.jpg"},
+       ]
 
     stats = [
         {"count": 50, "label": "Tourist Destinations"},
         {"count": 200, "label": "Local Partners"},
         {"count": 15, "label": "Tribal Communities"},
-        {"count": 1000, "label": "Happy Visitors"},
-    ]
+      ]
 
     community_intro = "Our platform connects tourists with local artisans, guides, and service providers..."
     community_benefits = [
         "Direct booking with local homestays",
         "Authentic experiences with tribal guides",
         "Purchase traditional crafts directly from artisans",
-        "Support eco-friendly tourism initiatives"
+
     ]
 
     context = {
@@ -53,58 +50,67 @@ def home(request):
     return render(request, "home.html", context)
 
 def destinations(request):
-    destinations_data = [
-        {
-            "slug": "netarhat",
-            "name": "Netarhat",
-            "category": "nature",
-            "main_image": "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg",
-            "thumbnails": [
-                "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg",
-                "https://images.pexels.com/photos/1029602/pexels-photo-1029602.jpeg",
-                "https://images.pexels.com/photos/1029603/pexels-photo-1029603.jpeg",
-            ],
-            "stars": "★★★★★",
-            "rating": "4.8",
-            "tagline": "The 'Queen of Chotanagpur'",
-            "description": "Netarhat is a picturesque hill station known for its stunning sunrise and sunset views...",
-            "highlights": [
-                "Spectacular sunrise and sunset points",
-                "Cool climate throughout the year",
-                "Dense forests with diverse flora",
-                "Netarhat Residential School",
-                "Tribal villages nearby"
-            ],
-            "best_time": "October to March",
-            "distance": "156 km"
-        },
-        {
-            "slug": "hundru",
-            "name": "Hundru Falls",
-            "category": "nature adventure",
-            "main_image": "https://images.pexels.com/photos/1029600/pexels-photo-1029600.jpeg",
-            "thumbnails": [
-                "https://images.pexels.com/photos/1029600/pexels-photo-1029600.jpeg",
-                "https://images.pexels.com/photos/1029601/pexels-photo-1029601.jpeg",
-                "https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg",
-            ],
-            "stars": "★★★★☆",
-            "rating": "4.6",
-            "tagline": "Majestic 320-feet Waterfall",
-            "description": "Hundru Falls is one of Jharkhand's most spectacular waterfalls, created by the Subarnarekha River...",
-            "highlights": [
-                "320 feet high waterfall",
-                "Swimming pools at the base",
-                "Rocky terrain perfect for trekking",
-                "Photography opportunities",
-                "Picnic spots"
-            ],
-            "best_time": "July to February",
-            "distance": "45 km"
-        },
-        # You can add Betla, Deoghar, etc. the same way
-    ]
+#     destinations_data = [
+#         {
+#             "slug": "netarhat",
+#             "name": "Netarhat",
+#             "category": "nature",
+#             "main_image": "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg",
+#             "thumbnails": [
+#                 "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg",
+#                 "https://images.pexels.com/photos/1029602/pexels-photo-1029602.jpeg",
+#                 "https://images.pexels.com/photos/1029603/pexels-photo-1029603.jpeg",
+#             ],
+#             "stars": "★★★★★",
+#             "rating": "4.8",
+#             "tagline": "The 'Queen of Chotanagpur'",
+#             "description": "Netarhat is a picturesque hill station known for its stunning sunrise and sunset views...",
+#             "highlights": [
+#                 "Spectacular sunrise and sunset points",
+#                 "Cool climate throughout the year",
+#                 "Dense forests with diverse flora",
+#                 "Netarhat Residential School",
+#                 "Tribal villages nearby"
+#             ],
+#             "best_time": "October to March",
+#             "distance": "156 km"
+#         },
+#         {
+#             "slug": "hundru",
+#             "name": "Hundru Falls",
+#             "category": "nature adventure",
+#             "main_image": "https://images.pexels.com/photos/1029600/pexels-photo-1029600.jpeg",
+#             "thumbnails": [
+#                 "https://images.pexels.com/photos/1029600/pexels-photo-1029600.jpeg",
+#                 "https://images.pexels.com/photos/1029601/pexels-photo-1029601.jpeg",
+#                 "https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg",
+#             ],
+#             "stars": "★★★★☆",
+#             "rating": "4.6",
+#             "tagline": "Majestic 320-feet Waterfall",
+#             "description": "Hundru Falls is one of Jharkhand's most spectacular waterfalls, created by the Subarnarekha River...",
+#             "highlights": [
+#                 "320 feet high waterfall",
+#                 "Swimming pools at the base",
+#                 "Rocky terrain perfect for trekking",
+#                 "Photography opportunities",
+#                 "Picnic spots"
+#             ],
+#             "best_time": "July to February",
+#             "distance": "45 km"
+#         },
+#         # You can add Betla, Deoghar, etc. the same way
+#     ]
+    destinations_data = models.Destination.objects.all()
     return render(request, "destinations.html", {"destinations": destinations_data})
+
+
+
+def search(request):
+    query = request.GET.get('q', '').lower()
+    all_destinations = models.Destination.objects.all()
+    filtered_destinations = [d for d in all_destinations if query in d.name.lower() or query in d.city.lower() or query in d.state.lower()]
+    return render(request, "destinations.html", {"destinations": filtered_destinations, "search_query": query})
     
 
 def accommodations(request):
@@ -316,25 +322,25 @@ def login(request):
     if request.method=="GET":
         return render(request,"login.html",{"output":" "})
     #recieve data for login
-    else:
-        email=request.POST.get("email")
-        password=request.POST.get("password")
+    
+    email=request.POST.get("email")
+    password=request.POST.get("password")
 
         #to match user details in database
-        userdetails=models.tourist_register.objects.filter(email=email,password=password).first()
+    userdetails=models.tourist_register.objects.filter(email=email,password=password).first()
 
-        if userdetails:
+    if userdetails:
             #print(userdetails[0].role)
-            request.session["sunm"]=userdetails.email
+        request.session["sunm"]=userdetails.email
             # request.session["srole"]=userdetails[0].role
 
             # if userdetails[0].role=="admin":
             #     return redirect("/myadmin/")
             # else:
-            messages.success(request,"You have successfully logged in !")
-            return redirect("booking")
-        else:
-            return render(request,"login.html",{"output":"Invalid user or verify your account....."})
+        messages.success(request,"You have successfully logged in !")
+        return redirect("booking")        
+    else:
+        return render(request,"login.html",{"output":"Invalid user or verify your account....."})
 
 # def login(request):
 #     if request.user.is_authenticated:

@@ -1,82 +1,258 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Culture - JourneyGenix</title>
+    <title>Discover Jharkhand Cultures - JourneyGenix</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'styles/main.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/culture.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        header {
+            background: linear-gradient(90deg, #ff7f00, #228b22);
+            padding: 150px;
+            text-align: center;
+            color: white;
+            /* position: sticky; */
+           top: 0;
+            z-index: 1000;
+            /* height: 100px; */
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+            margin: 0;
+        }
+
+        nav {
+            /* margin-top: 10px; */
+
+        }
+
+        nav a {
+            color: white;
+            font-weight: 600;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: yellow;
+            text-decoration: underline;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .theme-orange {
+            color: #ff6600;
+        }
+
+        .theme-green {
+            color: #2e7d32;
+        }
+
+        /* Equal image size */
+        .img-box {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #f9f9f9;
+            padding: 10px;
+        }
+
+        header {
+            height: 60px;
+        }
+    </style>
 </head>
-<body>
-    <!-- Navigation -->
-    {% include 'nav.html' %}
 
+<body class="bg-gray-50">
+
+    <!-- Navbar -->
+    <!-- <header class="bg-gradient-to-r from-orange-500 via-orange-500 to-green-600 text-white shadow-lg flex items-center">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl font-bold">Jharkhand Arts & Flavors</h1>
+            <nav class="space-x-6 text-lg">
+                <a href="#paintings" class="hover:underline">Paintings</a>
+                <a href="#handicrafts" class="hover:underline">Handicrafts</a>
+                <a href="#food" class="hover:underline">Local Food</a>
+                <a href="#locations" class="hover:underline">Locations</a>
+            </nav>
+        </div>
+    </header> -->
+    <!-- HEADER -->
+     {% include 'nav.html' %}
+    <header>
+        <h1>Discover Jharkhand Arts & Crafts</h1>
+        <nav>
+            <a href="#paintings">Paintings</a>
+            <a href="#handicrafts">Handicrafts</a>
+            <a href="#food">Local Food</a>
+            <a href="#locations">Locations</a>
+        </nav>
+    </header>
     <!-- Hero Section -->
-    <section class="page-hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Experience the Rich Culture of Jharkhand</h1>
-            <p>Tribal traditions, folk dances, local festivals, and authentic cuisines</p>
-        </div>
-    </section>
+  
 
-    <!-- Culture Highlights -->
-    <section class="culture-highlights">
-        <div class="container">
-            <h2 class="section-title">Cultural Highlights</h2>
-            <div class="highlights-grid">
-                <div class="highlight-card">
-                    <img src="{% static 'images/culture/dance.jpg' %}" alt="Tribal Dance">
-                    <h3>Traditional Dances</h3>
-                    <p>Witness captivating tribal dance forms like Chhau, Karma, and Jhumar that reflect the vibrant spirit of the state.</p>
+    <!-- Paintings Section -->
+    <section id="paintings" class="py-12 container mx-auto px-6">
+        <h2 class="text-4xl font-bold theme-orange mb-8 text-center">Traditional Paintings</h2>
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <div class="img-box">
+                    <img src="https://indianfolkart.org/wp-content/uploads/2025/04/Sohrai-painting-Khushboo-03.jpg"
+                        alt="Sohrai Painting">
                 </div>
-                <div class="highlight-card">
-                    <img src="{% static 'images/culture/cuisine.jpg' %}" alt="Cuisine">
-                    <h3>Local Cuisine</h3>
-                    <p>Taste authentic dishes like Dhuska, Rugra, and Handia prepared with locally sourced ingredients.</p>
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Sohrai Painting</h3>
+                <p class="text-gray-600 text-lg">Sohrai art, painted on mud walls using natural pigments like red,
+                    white, black, and ochre, is a ritualistic tradition celebrated during harvest. The motifs of
+                    animals,
+                    plants, and geometrical designs symbolize fertility, prosperity, and the close bond between humans
+                    and nature. It is a living tradition of the Hazaribagh region.</p>
+            </div>
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <div class="img-box">
+                    <img src="https://static.wixstatic.com/media/9dd462_1f71d9134bd94c798738c4c36ad6a0b3~mv2.jpg"
+                        alt="Khovar Painting">
                 </div>
-                <div class="highlight-card">
-                    <img src="{% static 'images/culture/art.jpg' %}" alt="Handicrafts">
-                    <h3>Handicrafts</h3>
-                    <p>Explore traditional pottery, bamboo crafts, and paintings made by skilled local artisans.</p>
-                </div>
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Khovar Painting</h3>
+                <p class="text-gray-600 text-lg">Khovar art, traditionally painted on wedding chamber walls, symbolizes
+                    love, fertility, and family bonding. Using black and white contrasts made from natural pigments, it
+                    reflects a couple’s union and blessings for a prosperous married life. Geometric, floral, and animal
+                    patterns dominate these symbolic artworks.</p>
             </div>
         </div>
     </section>
 
-    <!-- Cultural Experiences Section -->
-    <section class="culture-experiences">
-        <div class="container">
-            <h2 class="section-title">Plan Your Cultural Experience</h2>
-            <p class="section-subtitle">Join guided tours, attend live performances, or participate in workshops.</p>
-            <div class="experiences-grid">
-                <div class="experience-card">
-                    <h3>Village Tours</h3>
-                    <p>Immerse yourself in tribal village life, learn about their traditions, and interact with locals.</p>
-                    <button class="btn btn-primary" onclick="bookExperience('village-tour')">Book Now</button>
+    <!-- Handicrafts Section -->
+    <section id="handicrafts" class="py-12 bg-green-50">
+        <h2 class="text-4xl font-bold theme-orange mb-8 text-center">Handicrafts</h2>
+        <div class="grid md:grid-cols-3 gap-10 container mx-auto px-6">
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <div class="img-box">
+                    <img src="https://www.sowpeace.in/cdn/shop/articles/what-is-dokra-art-and-why-it-is-so-precious-742786.jpg?v=1736197967"
+                        alt="Dhokra Art">
                 </div>
-                <div class="experience-card">
-                    <h3>Dance Workshops</h3>
-                    <p>Learn the steps of Chhau and Karma dances from trained artists in hands-on sessions.</p>
-                    <button class="btn btn-primary" onclick="bookExperience('dance-workshop')">Join Workshop</button>
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Dhokra Art</h3>
+                <p class="text-gray-600 text-lg">An ancient 4,000-year-old metal casting technique using lost-wax
+                    process, Dhokra art is renowned for intricate brass figurines of animals, tribal deities, and
+                    ornaments. Its raw beauty and antique finish make it globally recognized and treasured as heritage
+                    art.</p>
+            </div>
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <div class="img-box">
+                    <img src="https://www.memeraki.com/cdn/shop/files/Durga-Family-in-Terracotta-by-Ranjan-Das-1_1024x.png?v=1725387766"
+                        alt="Terracotta Art">
                 </div>
-                <div class="experience-card">
-                    <h3>Festival Packages</h3>
-                    <p>Attend popular festivals with guided experiences and cultural insights.</p>
-                    <button class="btn btn-primary" onclick="bookExperience('festival-package')">Explore</button>
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Terracotta Art</h3>
+                <p class="text-gray-600 text-lg">Crafted from natural clay, Terracotta sculptures and idols often depict
+                    gods, goddesses, animals, and everyday tribal life. These clay masterpieces carry earthy textures
+                    that highlight Jharkhand’s connection with nature and rural culture.</p>
+            </div>
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <div class="img-box">
+                    <img src="https://indianbijou.wordpress.com/wp-content/uploads/2015/04/tribal-jewellery-header.jpg"
+                        alt="Tribal Jewellery">
                 </div>
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Tribal Jewellery</h3>
+                <p class="text-gray-600 text-lg">Exquisite ornaments made from silver, brass, beads, and natural stones
+                    represent the cultural identity of Jharkhand tribes. Each piece narrates heritage, with designs
+                    inspired by flora, fauna, and tribal lifestyle.</p>
             </div>
         </div>
     </section>
 
-   
-   {% include 'footer.html' %}
+    <!-- Local Food Section -->
+    <section id="food" class="py-12 container mx-auto px-6">
+        <h2 class="text-4xl font-bold theme-orange mb-8 text-center">Local Food Delights</h2>
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <div class="img-box">
+                    <img src="https://c.ndtvimg.com/2018-11/1ivb9hq_thekua_625x300_13_November_18.jpg" alt="Thekua">
+                </div>
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Thekua</h3>
+                <p class="text-gray-600 text-lg">A crunchy, sweet snack made with wheat flour, ghee, and jaggery, Thekua
+                    is a must-have during Chhath Puja. It carries religious significance and is cherished as a healthy,
+                    travel-friendly delicacy that lasts for weeks.</p>
+            </div>
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <div class="img-box">
+                    <img src="https://dy3rma73kowlp.cloudfront.net/uploads/2024/01/Dhuska-Recipe.jpg" alt="Dhuska">
+                </div>
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Dhuska</h3>
+                <p class="text-gray-600 text-lg">Prepared by deep frying a fermented batter of rice and lentils, Dhuska
+                    is a staple breakfast dish in Jharkhand. It is often paired with spicy potato curry or mutton, loved
+                    for its crispiness and rich flavor.</p>
+            </div>
+        </div>
+    </section>
 
-    <script src="{% static 'scripts/main.js' %}"></script>
-    <script src="{% static 'scripts/culture.js' %}"></script>
+    <!-- Locations Section -->
+    <section id="locations" class="py-12 bg-orange-50">
+        <h2 class="text-4xl font-bold theme-orange mb-8 text-center">Where to Buy</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 container mx-auto px-6">
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Ranchi Hat Market</h3>
+                <p class="text-gray-600 text-lg">A bustling hub for handicrafts and tribal jewellery where you can find
+                    authentic Jharkhand treasures at affordable prices.</p>
+            </div>
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Hazaribagh Craft Village</h3>
+                <p class="text-gray-600 text-lg">World-famous for Sohrai and Khovar paintings, artisans here open their
+                    homes for visitors to buy original works.</p>
+            </div>
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Jamshedpur Tribal Bazaar</h3>
+                <p class="text-gray-600 text-lg">Specializes in Dhokra figurines, terracotta items, and handwoven
+                    baskets straight from tribal communities.</p>
+            </div>
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Deoghar Local Craft Stalls</h3>
+                <p class="text-gray-600 text-lg">Alongside the famous Baidyanath temple, street markets sell traditional
+                    jewellery and festive handicrafts.</p>
+            </div>
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Chaibasa Weekly Market</h3>
+                <p class="text-gray-600 text-lg">Known for tribal ornaments, musical instruments, and bamboo crafts sold
+                    by local artisans every week.</p>
+            </div>
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Dumka Handicraft Fairs</h3>
+                <p class="text-gray-600 text-lg">Seasonal fairs in Dumka display vibrant tribal paintings, textiles, and
+                    silver ornaments at reasonable prices.</p>
+            </div>
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Palamu Market</h3>
+                <p class="text-gray-600 text-lg">A perfect place to explore bamboo crafts, terracotta figurines, and
+                    locally made tribal jewellery.</p>
+            </div>
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <h3 class="text-4xl font-bold theme-green mb-8 text-center">Daltonganj Craft Street</h3>
+                <p class="text-gray-600 text-lg">Home to affordable tribal art and handmade utility crafts, perfect for
+                    souvenirs and gifting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-orange-500 to-green-600 text-white text-center py-6 mt-10">
+        <p>© 2025 Jharkhand Arts & Flavors | Designed with ❤ by Local Heritage Enthusiasts</p>
+    </footer>
+
 </body>
+
 </html>

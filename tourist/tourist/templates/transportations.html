@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transportation Services - JourneyGenix</title>
+    
+    <!-- Static file links -->
     <link rel="stylesheet" href="{% static 'styles/main.css' %}">
     <link rel="stylesheet" href="{% static 'styles/transportations.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    
     {% include 'nav.html' %}
-
+    
     <!-- Attractive Header Section -->
     <header class="transport-header-bg">
         <h2>Transportation Services</h2>
@@ -22,45 +24,85 @@
     <section id="transport" class="transport">
         <div class="container">
             <div class="transport-options">
-                {% for service in transport_services %}
+                <!-- Transport Card: Cab -->
                 <div class="transport-card">
-                    <div class="transport-icon">{{ service.icon }}</div>
-                    <h3>{{ service.name }}</h3>
-                    <p>{{ service.description }}</p>
+                    <div class="transport-icon">🚗</div>
+                    <h3>Private Cabs</h3>
+                    <p>Comfortable AC cars with experienced local drivers</p>
                     <div class="transport-features">
-                        {% for feature in service.features %}
-                        <span class="feature">{{ feature }}</span>
-                        {% endfor %}
+                        <span class="feature">❄ AC</span>
+                        <span class="feature">👨‍💼 Professional Driver</span>
+                        <span class="feature">🛡 Insured</span>
                     </div>
-                    <div class="transport-price">{{ service.price }}</div>
-                    <button class="btn btn-primary" onclick="bookTransport('{{ service.type }}')">
-                        {{ service.button_text }}
-                    </button>
+                    <div class="transport-price">₹12-15/km</div>
+                    <button class="btn btn-primary" onclick="bookTransport('cab')">Book Cab</button>
                 </div>
-                {% endfor %}
+
+                <!-- Transport Card: Shared -->
+                <div class="transport-card">
+                    <div class="transport-icon">🚐</div>
+                    <h3>Shared Vehicles</h3>
+                    <p>Cost-effective shared rides for budget-conscious travelers</p>
+                    <div class="transport-features">
+                        <span class="feature">💰 Economical</span>
+                        <span class="feature">👥 Shared Ride</span>
+                        <span class="feature">📅 Scheduled</span>
+                    </div>
+                    <div class="transport-price">₹5-8/km</div>
+                    <button class="btn btn-primary" onclick="bookTransport('shared')">Book Shared</button>
+                </div>
+
+                <!-- Transport Card: Bike -->
+                <div class="transport-card">
+                    <div class="transport-icon">🏍</div>
+                    <h3>Two-Wheeler Rental</h3>
+                    <p>Explore at your own pace with bike and scooter rentals</p>
+                    <div class="transport-features">
+                        <span class="feature">⛽ Fuel Efficient</span>
+                        <span class="feature">🔑 Self Drive</span>
+                        <span class="feature">🕐 Hourly/Daily</span>
+                    </div>
+                    <div class="transport-price">₹300-800/day</div>
+                    <button class="btn btn-primary" onclick="bookTransport('bike')">Rent Bike</button>
+                </div>
+
+                <!-- Transport Card: Bus -->
+                <div class="transport-card">
+                    <div class="transport-icon">🚌</div>
+                    <h3>Tourist Bus</h3>
+                    <p>Group tours with air-conditioned buses and guide services</p>
+                    <div class="transport-features">
+                        <span class="feature">🧑‍🏫 Guide Included</span>
+                        <span class="feature">❄ AC Bus</span>
+                        <span class="feature">👥 Group Tour</span>
+                    </div>
+                    <div class="transport-price">₹500-1200/person</div>
+                    <button class="btn btn-primary" onclick="bookTransport('bus')">Book Tour</button>
+                </div>
             </div>
 
+            <!-- Journey Planner Form -->
             <div class="journey-planner">
                 <h3>Plan Your Journey</h3>
                 <div class="journey-form">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="pickup">Pickup Location</label>
-                            <input type="text" id="pickup" placeholder="Enter pickup location">
+                            <input type="text" id="pickup" name="pickup" placeholder="Enter pickup location">
                         </div>
                         <div class="form-group">
                             <label for="destination">Destination</label>
-                            <input type="text" id="destination" placeholder="Enter destination">
+                            <input type="text" id="destination" name="destination" placeholder="Enter destination">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="journey-date">Travel Date</label>
-                            <input type="date" id="journey-date">
+                            <input type="date" id="journey-date" name="journey_date">
                         </div>
                         <div class="form-group">
                             <label for="return-date">Return Date (Optional)</label>
-                            <input type="date" id="return-date">
+                            <input type="date" id="return-date" name="return_date">
                         </div>
                     </div>
                     <button class="btn btn-primary" onclick="calculateJourney()">Calculate Route & Price</button>
@@ -69,8 +111,45 @@
         </div>
     </section>
 
-    {% include 'footer.html' %}
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>JourneyGenix</h3>
+                    <p>Connecting tourists with authentic experiences while empowering local communities through sustainable tourism.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="{% url 'destinations' %}">Destinations</a></li>
+                        <li><a href="{% url 'accommodations' %}">Accommodations</a></li>
+                        <li><a href="{% url 'culture' %}">Cultural Experiences</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#booking">Booking Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="#facebook" class="social-link">Facebook</a>
+                        <a href="#instagram" class="social-link">Instagram</a>
+                        <a href="#twitter" class="social-link">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 JourneyGenix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
+    <!-- JS -->
     <script src="{% static 'scripts/transportations.js' %}"></script>
 </body>
 </html>

@@ -30,10 +30,6 @@
                 <a href="{% url 'itinerary' %}" class="btn btn-secondary" style="margin-left: 10px;">Plan Your Trip (AI)</a>
              </div>
         </div>
-        <div class="hero-scroll">
-            <span>Scroll Down</span>
-            <div class="scroll-arrow"></div>
-        </div>
     </section>
 
     <!-- Features Section -->
@@ -63,7 +59,7 @@
                     <div class="destination-content">
                         <h3>{{ destination.name }}</h3>
                         <p>{{ destination.description }}</p>
-                        <a href="{% url 'destination_detail' destination.slug %}" class="btn btn-small">Explore</a>
+                        <a href="{% url 'destination_detail' destination.slug %}" class="btn btn-small"></a>
                     </div>
                 </div>
                 {% endfor %}
@@ -74,7 +70,7 @@
         </div>
     </section>
 
-    <!-- Statistics -->
+    <!-- Statistics
     <section class="statistics">
         <div class="container">
             <div class="stats-grid">
@@ -86,7 +82,7 @@
                 {% endfor %}
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Newsletter -->
     <section class="newsletter">

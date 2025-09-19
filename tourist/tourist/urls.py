@@ -24,6 +24,7 @@ from .import views
 
 urlpatterns = [
     path('',views.home,name='home'),
+    path('admin/',admin.site.urls,name='admin'),
     path('destinations/',views.destinations,name='destinations'),
     path('destinations/<slug:slug>/',views.destination_detail,name='destination_detail'),
     path('accommodations/',views.accommodations,name='accommodations'),
@@ -37,5 +38,6 @@ urlpatterns = [
     path('itinerary/',views.itinerary,name='itinerary'),
     path('booking/',views.booking,name='booking'),
     path('booking_results/',views.booking_results,name='booking_results'),
+    path('search/', views.search, name='search'),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
